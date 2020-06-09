@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 52872844820240906}
   - component: {fileID: 52872844820240907}
   - component: {fileID: 114213345012579552}
+  - component: {fileID: 602662332}
   m_Layer: 0
   m_Name: wood_box
   m_TagString: Target
@@ -123,3 +124,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   desctrucableVersion: {fileID: 6065321458290233405, guid: f688b8950395cb6439c6d8a06e63f27b,
     type: 3}
+--- !u!95 &602662332
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52872844820240904}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb738d6101f634b4f9f09e596764c47a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

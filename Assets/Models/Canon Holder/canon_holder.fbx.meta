@@ -1,18 +1,14 @@
 fileFormatVersion: 2
-guid: 81c4a81d538ffb34cbf5e28f7b16140f
+guid: b6a81aea7860f9b479e011435afe9e4f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Canon
     400000: //RootNode
-    400002: Canon
-    2100000: Canon
+    2100000: Material.002
     2300000: //RootNode
-    2300002: Canon
     3300000: //RootNode
-    3300002: Canon
-    4300000: Canon
+    4300000: Cube.002
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -45,20 +41,20 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 1
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 1
+    preserveHierarchy: 0
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001

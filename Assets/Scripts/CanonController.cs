@@ -11,6 +11,9 @@ public class CanonController : MonoBehaviour
     //canon game object
     public GameObject canonWeapon;
 
+    //animation
+    public Animator canonAnimator;
+
     //audio source
     AudioSource[] audioSources;
     AudioSource explosionEffect;
@@ -71,16 +74,16 @@ public class CanonController : MonoBehaviour
         if (powerController.isShot)
         {
             //add smoke effect
-            GameObject smoke = Instantiate(smokeEffect) as GameObject;
-            smoke.transform.SetParent(canonWeapon.transform);
-            smoke.transform.localPosition = new Vector3(0f, 0f, 4f);
-            StartCoroutine(DestroySmokeEffect(smoke));
+            StartCoroutine(DestroySmokeEffect());
+
+            //start animation
+            StartCoroutine(PlayCanonFireAnimation());
 
             //play sound
             explosionEffect.Play();
 
             //duplicate
-            currentBall = Instantiate(canonBallPrefab, new Vector3(0f, 2.5f, 0f), Quaternion.Euler(
+            currentBall = Instantiate(canonBallPrefab, new Vector3(0f, transform.localPosition.y + canonJoint.transform.localPosition.y, 0f), Quaternion.Euler(
                     canonJoint.eulerAngles.x,
                     transform.eulerAngles.y,
                     0f
@@ -102,11 +105,26 @@ public class CanonController : MonoBehaviour
 
             //to prevent add force frequently
             powerController.DeactiveShotStatus();
+
+            //start animation
+            //canonAnimator.SetBool("isFire", false);
         }
     }
 
-    IEnumerator DestroySmokeEffect(GameObject smoke)
+    IEnumerator PlayCanonFireAnimation()
     {
+        canonAnimator.SetBool("isFire", true);
+
+        yield return new WaitForSeconds(1);
+
+        canonAnimator.SetBool("isFire", false);
+    }
+
+    IEnumerator DestroySmokeEffect()
+    {
+        GameObject smoke = Instantiate(smokeEffect, canonWeapon.transform) as GameObject;
+        smoke.transform.localPosition = new Vector3(canonWeapon.transform.localPosition.x, canonWeapon.transform.localPosition.y, canonWeapon.transform.localPosition.z + 4f);
+
         yield return new WaitForSeconds(2);
 
         Destroy(smoke);
@@ -157,8 +175,7 @@ public class CanonController : MonoBehaviour
             if(sparks == null)
             {
                 sparks = Instantiate(sparksEffect, canonWeapon.transform) as GameObject;
-                sparks.transform.localPosition = new Vector3(0.03f, -1.21f, -0.13f);
-                sparks.transform.rotation = Quaternion.Euler(90f,0f,0f);
+                sparks.transform.localPosition = new Vector3(canonWeapon.transform.localPosition.x, canonWeapon.transform.localPosition.y + 1.5f, canonWeapon.transform.localPosition.z - 1);
             }
         }
         else

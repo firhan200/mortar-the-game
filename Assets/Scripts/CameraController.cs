@@ -10,9 +10,12 @@ public class CameraController : MonoBehaviour
     Vector3 cameraOffset;
     CanonController canonController;
 
+    Vector3 originalCameraPosition;
+
     // Start is called before the first frame update
     void Start()
     {
+        originalCameraPosition = transform.position;
         powerController = GameObject.Find("Fire Button").GetComponent<PowerController>();
         canonController = GameObject.Find("Canon Base").GetComponent<CanonController>();
     }
@@ -48,7 +51,6 @@ public class CameraController : MonoBehaviour
 
     public void ResetCamera()
     {
-        transform.position = new Vector3(0f, 7.64f, -7.27f);
-        transform.rotation = Quaternion.Euler(20f,0f,0f);
+        transform.position = originalCameraPosition;
     }
 }
