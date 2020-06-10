@@ -31,6 +31,9 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     public GameObject fireEffect;
 
+    [SerializeField]
+    public bool previewMode = false;
+
     //dependency game object
     //joystick
     private GameObject joyStick;
@@ -55,16 +58,18 @@ public class WeaponController : MonoBehaviour
     private void Start()
     {
         /* initialize */
+        if (!previewMode)
+        {
+            InitJoystick();
 
-        InitJoystick();
+            GetPowerButton();
 
-        GetPowerButton();
+            GetWeaponObject();
 
-        GetWeaponObject();
+            GetAudioSource();
 
-        GetAudioSource();
-
-        weaponAnimator = GetComponent<Animator>();
+            weaponAnimator = GetComponent<Animator>();
+        }
     }
 
     void GetAudioSource()
@@ -110,8 +115,11 @@ public class WeaponController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Fire();
-        Aim();
+        if (!previewMode)
+        {
+            Fire();
+            Aim();
+        }
     }
 
     void Fire()

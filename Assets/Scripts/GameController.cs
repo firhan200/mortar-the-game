@@ -28,8 +28,6 @@ public class GameController : MonoBehaviour
 
         InitScorePoint();
 
-        SelectWeapon(1);
-
         //set ammo
         currentAmmo = totalAmmo;
 
@@ -41,6 +39,11 @@ public class GameController : MonoBehaviour
 
         //drop random box
         DropBox();
+    }
+
+    private void Start()
+    {
+        SelectWeapon(1);
     }
 
     void InitScorePoint()
