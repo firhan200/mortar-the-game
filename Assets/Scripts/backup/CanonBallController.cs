@@ -10,7 +10,7 @@ public class CanonBallController : MonoBehaviour
     public GameObject desctructionBoxPrefab;
     AudioSource explosionSoundEffect;
     PowerController powerController;
-    CanonController canonController;
+    //CanonController canonController;
     CameraController cameraController;
     GameController gameController;
     public float waitSeconds = 2f;
@@ -22,7 +22,7 @@ public class CanonBallController : MonoBehaviour
     private void Start()
     {
         powerController = GameObject.Find("Fire Button").GetComponent<PowerController>();
-        canonController = GameObject.Find("Canon Base").GetComponent<CanonController>();
+        //canonController = GameObject.Find("Canon Base").GetComponent<CanonController>();
         cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
         gameController = GameObject.Find("World").GetComponent<GameController>();
         explosionSoundEffect = GetComponent<AudioSource>();
@@ -112,7 +112,6 @@ public class CanonBallController : MonoBehaviour
         }
         else
         {
-            Debug.Log("HIT!!!");
             //increment user point/score
             gameController.IncrementPoint();
         }
@@ -131,41 +130,7 @@ public class CanonBallController : MonoBehaviour
         //hide explosion
         Destroy(explosion);
 
-        //reset camera, canon , etc.
-        ResetAll();
-
         //destroy object
         Destroy(gameObject);
-    }
-
-    void ResetAll()
-    {
-        //check if all ammo out
-        if(gameController.currentAmmo > 0)
-        {
-            //reset canon position
-            canonController.ResetCanon();
-
-            //reset power
-            powerController.ResetPower();
-
-            //reset camera
-            cameraController.ResetCamera();
-
-            if (isHitTarget)
-            {
-                //drop box again
-                gameController.DropBox();
-            }
-        }
-        else
-        {
-            //lose
-            //hide game canvas
-            GameObject.Find("Canvas").GetComponent<Canvas>().enabled = false;
-
-            //show game over
-            GameObject.Find("Game Over Canvas").GetComponent<Canvas>().enabled = true;
-        }
     }
 }

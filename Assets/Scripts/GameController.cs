@@ -4,27 +4,54 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //input
+    [SerializeField]
     public int totalAmmo = 3;
+
+    [SerializeField]
     public GameObject boxPrefab;
-    public int currentAmmo = 3;
-    public UnityEngine.UI.Text scorePointText;
-    public UnityEngine.UI.Text scorePointGameOverText;
+
+    //local
+    int currentAmmo = 3;
+    UnityEngine.UI.Text scorePointText;
+    UnityEngine.UI.Text scorePointGameOverText;
     UnityEngine.UI.RawImage[] ammoImages;
     CanvasAmmoController canvasAmmoController;
-    public int point = 0; //set no point, so first increment will be 0
+    PowerController powerController;
+    CameraController cameraController;
+    int point = 0; //set no point, so first increment will be 0
 
     public void Awake()
     {
+        //init all controller
+        InitController();
+
+        InitScorePoint();
+
+        //set ammo
         currentAmmo = totalAmmo;
+
         //hide gameover canvas
         GameObject.Find("Game Over Canvas").GetComponent<Canvas>().enabled = false;
-
-        canvasAmmoController = GameObject.Find("Canon Ammo Panel").GetComponent<CanvasAmmoController>();
 
         //draw
         canvasAmmoController.DrawAmmoImages(currentAmmo);
 
+        //drop random box
         DropBox();
+    }
+
+    void InitScorePoint()
+    {
+        scorePointText = GameObject.Find("Score Point").GetComponent<UnityEngine.UI.Text>();
+        scorePointGameOverText = GameObject.Find("Your Score Text").GetComponent<UnityEngine.UI.Text>();
+    }
+
+    void InitController()
+    {
+        canvasAmmoController = GameObject.Find("Canon Ammo Panel").GetComponent<CanvasAmmoController>();
+        powerController = GameObject.Find("Fire Button").GetComponent<PowerController>();
+        cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
     }
 
     public void ResetAmmo()
@@ -49,13 +76,46 @@ public class GameController : MonoBehaviour
 
     public void IncrementPoint()
     {
-        Debug.Log("Got Point!");
-
         //increment point
         point = point + 1;
 
         //draw to score board
         scorePointText.text = point.ToString();
         scorePointGameOverText.text = "Your Score: "+point.ToString();
+    }
+
+    public void AmmoHitSomething(bool isHitTarget)
+    {
+        if (!isHitTarget)
+        {
+            //decrease ammo
+            DecreaseAmmo();
+        }
+       
+        if (currentAmmo > 0)
+        {
+            //game continue
+            //back to first position
+            powerController.ResetPower();
+            cameraController.ResetCamera();
+        }
+        else
+        {
+            //lose
+            //hide game canvas
+            GameObject.Find("Canvas").GetComponent<Canvas>().enabled = false;
+
+            //show game over
+            GameObject.Find("Game Over Canvas").GetComponent<Canvas>().enabled = true;
+        }
+
+        if (isHitTarget)
+        {
+            //increment point
+            IncrementPoint();
+
+            //drop another box
+            DropBox();
+        }
     }
 }

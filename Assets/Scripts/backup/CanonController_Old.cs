@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CanonController : MonoBehaviour
+public class CanonController_Old : MonoBehaviour
 {
     //duplicate for canon ball
     public GameObject canonBallPrefab;
@@ -94,9 +94,6 @@ public class CanonController : MonoBehaviour
 
             float totalFirePower = powerController.powerSlider.value * firePower;
 
-            Debug.Log(currentBall.transform.localEulerAngles.x);
-            Debug.Log(canonJoint.eulerAngles.x+" or "+ canonJoint.localEulerAngles.x);
-
             //unfreeze ball
             canonBallRB.constraints = RigidbodyConstraints.None;
 
@@ -132,12 +129,10 @@ public class CanonController : MonoBehaviour
 
     void Aim()
     {
-        //validation aim limitation
-        AimLimitation();
-
         //check if joystick is pressed
         bool isJoystickPressed = joyStick.GetComponent<JoystickController>().isPressed;
 
+        //user aim horizontal
         if (joyStickControl.Horizontal != 0 && isJoystickPressed)
         {
             //play movement sfx
@@ -148,11 +143,23 @@ public class CanonController : MonoBehaviour
 
             //user aim horizontal
             float angle = joyStickControl.Horizontal * rotationSpeed * Time.fixedDeltaTime;
-            
-            this.transform.Rotate(0f, angle, 0f);
+
+            //rotate validation
+            float rotateResult = Mathf.Abs(transform.eulerAngles.y + angle);
+            if (
+                //between 0' till -70'
+                (rotateResult >= (360 - maximumYAngle) && rotateResult <= 360) ||
+                //between 0' till 70'
+                (rotateResult >= 0 && rotateResult < maximumYAngle) ||
+                (rotateResult >= 360) //i dont know bug?
+                )
+            {
+                this.transform.Rotate(0f, angle, 0f);
+            }
         }
 
-        if(joyStickControl.Vertical != 0 && isJoystickPressed)
+        //user aim vertical
+        if (joyStickControl.Vertical != 0 && isJoystickPressed)
         {
             //play movement sfx
             if (!movementEffect.isPlaying)
@@ -160,11 +167,17 @@ public class CanonController : MonoBehaviour
                 movementEffect.Play();
             }
 
-            //user aim vertical
             float angle = joyStickControl.Vertical * rotationSpeed * Time.fixedDeltaTime;
+            angle = angle * -1; //inverse rotate
 
-            //invert
-            canonJoint.Rotate(angle * -1, 0f, 0f);
+            //rotate validation
+            float rotateResult = (360 - canonJoint.eulerAngles.x) - angle;
+            Debug.Log(rotateResult);
+            if(rotateResult >= maximumXBottomAngle && rotateResult <= maximumXTopAngle)
+            {
+                //rotate
+                canonJoint.Rotate(angle, 0f, 0f);
+            }
         }
     }
 
@@ -213,21 +226,24 @@ public class CanonController : MonoBehaviour
         }
 
         //limit vertical
-        if (canonJoint.rotation.x > 0)
-        {
-            //down
-            if (canonJoint.eulerAngles.x < maximumXBottomAngle)
-            {
-                //canonJoint.rotation = Quaternion.Euler(maximumXBottomAngle, 0f, 0f);
-            }
-        }
-        else if(canonJoint.rotation.x < 0)
-        {
-            //up
-            if ((360 - canonJoint.eulerAngles.x) > maximumXTopAngle)
-            {
-                //canonJoint.rotation = Quaternion.Euler(maximumXTopAngle * -1, 0f, 0f);
-            }
-        }
+        //if (canonJoint.rotation.x > 0)
+        //{
+        //    //down
+        //    if (((360 - canonJoint.localEulerAngles.x)) > maximumXBottomAngle)
+        //    {
+        //        //set canon joint to angle 0 (look stright foward)
+        //        canonJoint.rotation = Quaternion.Euler(maximumXBottomAngle, transform.eulerAngles.y, 0f);
+
+        //        //reset canon base rotation to
+        //    }
+        //}
+        //else if(canonJoint.rotation.x < 0)
+        //{
+        //    //up
+        //    if (((360 - canonJoint.localEulerAngles.x) * -1) > maximumXTopAngle)
+        //    {
+        //        canonJoint.rotation = Quaternion.Euler(maximumXTopAngle * -1, 0f, 0f);
+        //    }
+        //}
     }
 }
