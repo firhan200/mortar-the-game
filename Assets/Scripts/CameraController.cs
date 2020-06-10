@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,11 +32,17 @@ public class CameraController : MonoBehaviour
     {
         if (powerController.isBallReleased)
         {
-            //get ammo
-            GameObject ammo = GameObject.FindGameObjectWithTag("Ammo");
+            try
+            {
+                //get ammo
+                GameObject ammo = GameObject.FindGameObjectWithTag("Ammo");
 
-            //get ball position
-            transform.position = Vector3.Lerp(transform.position, ammo.transform.position - new Vector3(0f, -2f, followRange), Time.fixedDeltaTime * followSpeed);
+                //get ball position
+                transform.position = Vector3.Lerp(transform.position, ammo.transform.position - new Vector3(0f, -2f, followRange), Time.fixedDeltaTime * followSpeed);
+            }catch(Exception ex)
+            {
+                Debug.Log(ex.Message);
+            }
         }
     }
 

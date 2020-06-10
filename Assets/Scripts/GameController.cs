@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
 
         InitScorePoint();
 
+        SelectWeapon(1);
+
         //set ammo
         currentAmmo = totalAmmo;
 
@@ -116,6 +118,27 @@ public class GameController : MonoBehaviour
 
             //drop another box
             DropBox();
+        }
+    }
+
+    void SelectWeapon(int weaponIndex)
+    {
+        //get weapons holder
+        int counter = 0;
+        GameObject weapons = GameObject.Find("Weapons") as GameObject;
+
+        foreach(Transform transform in weapons.transform)
+        {
+            if(counter == weaponIndex)
+            {
+                transform.gameObject.SetActive(true);
+            }
+            else
+            {
+                transform.gameObject.SetActive(false);
+            }
+
+            counter++;
         }
     }
 }

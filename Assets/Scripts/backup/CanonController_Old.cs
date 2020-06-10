@@ -172,7 +172,6 @@ public class CanonController_Old : MonoBehaviour
 
             //rotate validation
             float rotateResult = (360 - canonJoint.eulerAngles.x) - angle;
-            Debug.Log(rotateResult);
             if(rotateResult >= maximumXBottomAngle && rotateResult <= maximumXTopAngle)
             {
                 //rotate

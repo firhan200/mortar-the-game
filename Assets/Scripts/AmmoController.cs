@@ -18,19 +18,35 @@ public class AmmoController : MonoBehaviour
     [SerializeField]
     private float explosionPower = 5f;
 
+    [SerializeField]
+    private GameObject flyingEffect;
+
     //local
+    Rigidbody ammoRigidBody;
     AudioSource explosionSoundEffect;
     GameController gameController;
     GameObject currentExplosion;
     bool isLose = false;
     bool isHitTarget = false;
+    private GameObject currentFlyingEffect;
 
     // Start is called before the first frame update
     void Start()
     {
         InitController();
-
+        ammoRigidBody = GetComponent<Rigidbody>();
         explosionSoundEffect = GetComponent<AudioSource>();
+
+        //init flying effect
+        InitFlyingEffect();
+    }
+
+    void InitFlyingEffect()
+    {
+        if(flyingEffect != null)
+        {
+            currentFlyingEffect = Instantiate(flyingEffect, transform) as GameObject;
+        }
     }
 
     void InitController()
@@ -41,6 +57,10 @@ public class AmmoController : MonoBehaviour
     private void FixedUpdate()
     {
         IsLose();
+
+        //for ammo to be able to face force
+        float rotateX = ammoRigidBody.velocity.normalized.y > 0 ? ammoRigidBody.velocity.normalized.y : ammoRigidBody.velocity.normalized.y * -1;
+        transform.Rotate(rotateX * 1.5f, 0f,0f);
     }
 
     /* on ammo hit something */
@@ -55,6 +75,12 @@ public class AmmoController : MonoBehaviour
         Explode();
 
         CheckHitTarget();
+
+        //destroy flying effect
+        if(currentFlyingEffect != null)
+        {
+            Destroy(currentFlyingEffect);
+        }
 
         //wait for amount of time
         yield return new WaitForSeconds(explosionCastSeconds);

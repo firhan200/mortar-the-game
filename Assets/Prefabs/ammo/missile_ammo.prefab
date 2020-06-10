@@ -128,7 +128,9 @@ MonoBehaviour:
     type: 3}
   explosionRadius: 7
   explosionCastSeconds: 2
-  explosionPower: 10
+  explosionPower: 50
+  flyingEffect: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4,
+    type: 3}
 --- !u!82 &169333859716549522
 AudioSource:
   m_ObjectHideFlags: 0
