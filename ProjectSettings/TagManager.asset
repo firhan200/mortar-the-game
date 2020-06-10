@@ -7,6 +7,7 @@ TagManager:
   - Target
   - Weapon
   - Ammo
+  - Weapon Prefab
   layers:
   - Default
   - TransparentFX

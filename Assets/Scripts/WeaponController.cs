@@ -120,6 +120,16 @@ public class WeaponController : MonoBehaviour
             Fire();
             Aim();
         }
+        else
+        {
+            PreviewMode();
+        }
+    }
+
+    void PreviewMode()
+    {
+        //rotate 
+        transform.Rotate(0f, 50f * Time.fixedDeltaTime, 0f);
     }
 
     void Fire()

@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     PowerController powerController;
     CameraController cameraController;
     int point = 0; //set no point, so first increment will be 0
+    PlayerData playerData;
 
     public void Awake()
     {
@@ -43,7 +44,10 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        SelectWeapon(1);
+        //load saved game
+        playerData = SaveData.LoadPlayerData();
+
+        SelectWeapon(playerData.GetSelectedWeaponIndex());
     }
 
     void InitScorePoint()
@@ -106,6 +110,9 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            //save high score
+            SaveHighScore(point);
+
             //lose
             //hide game canvas
             GameObject.Find("Canvas").GetComponent<Canvas>().enabled = false;
@@ -142,6 +149,17 @@ public class GameController : MonoBehaviour
             }
 
             counter++;
+        }
+    }
+
+    public void SaveHighScore(int newHighScore)
+    {
+        //check if high score greater than before
+        if(newHighScore > playerData.GetHighScore())
+        {
+            scorePointGameOverText.text = "New High Score: " + point.ToString();
+
+            SaveData.Save(newHighScore, playerData.GetSelectedWeaponIndex());
         }
     }
 }
