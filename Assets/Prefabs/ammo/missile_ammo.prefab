@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad7f3ab4690a444e9fb5b14a0fa21ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1000011797152326, guid: d3c637e774342294a89e52fe6751f1ca,
+  explosionEffect: {fileID: 1248331578108354, guid: fba3984b4d1739047b5b3e699ebda36a,
     type: 3}
   explosionRadius: 7.5
   explosionCastSeconds: 2

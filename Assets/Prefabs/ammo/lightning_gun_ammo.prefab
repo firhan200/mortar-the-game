@@ -123,13 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad7f3ab4690a444e9fb5b14a0fa21ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1000011128802252, guid: 95196828a1bffa0499029595ae820a5c,
+  explosionEffect: {fileID: 1472517160122636, guid: 42b5a7c17e87672438c3602c0b701f71,
     type: 3}
   explosionRadius: 10
   explosionCastSeconds: 2
   explosionPower: 5
-  flyingEffect: {fileID: 1000011396044746, guid: 6373e00884955554eb64404aa42980a5,
-    type: 3}
+  flyingEffect: {fileID: 0}
 --- !u!82 &3364921418846960005
 AudioSource:
   m_ObjectHideFlags: 0
