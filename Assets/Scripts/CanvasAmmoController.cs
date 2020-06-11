@@ -22,7 +22,7 @@ public class CanvasAmmoController : MonoBehaviour
             var ammoRect = ammoImageObj.GetComponent<RectTransform>();
 
             //translate
-            ammoRect.anchoredPosition = new Vector3((25 * (ammo - 1) * -1) - ((ammoRect.rect.width/2) * ammo),0f,0f);
+            ammoRect.anchoredPosition = new Vector3((35 * (ammo - 1) * -1) - ((ammoRect.rect.width/2) * ammo),0f,0f);
         }
     }
 }

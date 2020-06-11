@@ -22,7 +22,7 @@ public class WeaponController : MonoBehaviour
     public float firePower = 50f;
 
     [SerializeField]
-    public float rotationSpeed = 50f;
+    public float rotationSpeed = 100f;
 
     [SerializeField]
     public GameObject ammoPrefab;
@@ -35,11 +35,6 @@ public class WeaponController : MonoBehaviour
     public bool previewMode = false;
 
     //dependency game object
-    //joystick
-    private GameObject joyStick;
-    private Joystick joyStickInput;
-    private JoystickController joystickController;
-
     //fire button controller
     private PowerController powerController;
 
@@ -50,17 +45,27 @@ public class WeaponController : MonoBehaviour
     AudioSource fireSFX;
     AudioSource movementSFX;
 
+    //weapon animator
     private Animator weaponAnimator;
 
     //particle effect
     GameObject sparks;
+
+    //touch screen range
+    float touchRangePercent = 60f;
+    float minBottomTouchPosition, maxTopTouchPosition, minLeftTouchPosition, maxRightTouchPosition;
+
+    //touch aim
+    bool isSwiping = false;
+    Touch initialTouch;
 
     private void Start()
     {
         /* initialize */
         if (!previewMode)
         {
-            InitJoystick();
+            //get screen width and height
+            CalculateAvailableScreenTouch();
 
             GetPowerButton();
 
@@ -106,19 +111,12 @@ public class WeaponController : MonoBehaviour
         powerController = GameObject.Find("Fire Button").GetComponent<PowerController>();
     }
 
-    void InitJoystick()
-    {
-        joyStick = GameObject.Find("Fixed Joystick");
-        joyStickInput = joyStick.GetComponent<Joystick>();
-        joystickController = joyStick.GetComponent<JoystickController>();
-    }
-
     private void FixedUpdate()
     {
         if (!previewMode)
         {
             Fire();
-            Aim();
+            AimWithTouch();
         }
         else
         {
@@ -175,51 +173,121 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    void Aim()
+    void AimWithTouch()
     {
-        //check if joystick is pressed
-        bool isJoystickPressed = joystickController.isPressed;
-
-        //user aim horizontal
-        if (joyStickInput.Horizontal != 0 && isJoystickPressed)
+        bool isTouch = Input.touchCount > 0 ? true : false;
+        if (isTouch)
         {
-            //play audio sfx
-            PlayMovementSFX();
+            var touch = Input.GetTouch(0);
 
-            //user aim horizontal
-            float angle = joyStickInput.Horizontal * rotationSpeed * Time.fixedDeltaTime;
+            //get touch position
+            Vector3 touchPosition = touch.position;
 
-            //rotate validation
-            float rotateResult = Mathf.Abs(transform.eulerAngles.y + angle);
-            if (
-                //between 0' till -70'
-                (rotateResult >= (360 - maximumSideRotationAngle) && rotateResult <= 360) ||
-                //between 0' till 70'
-                (rotateResult >= 0 && rotateResult < maximumSideRotationAngle) ||
-                (rotateResult >= 360) //i dont know bug?
-                )
+            if(touch.phase == TouchPhase.Began)
             {
-                transform.Rotate(0f, angle, 0f);
+                //user start touch, store in var
+                initialTouch = touch;
+            }
+            else if(touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+            {
+                //user moved touch
+                isSwiping = true;
+
+                //check swipe direction
+                var deltaX = touchPosition.x - initialTouch.position.x; //greater than 0 is right and less than zero is left
+                var deltaY = touchPosition.y - initialTouch.position.y; //greater than 0 is up and less than zero is down
+
+                //check if only on square available position
+                if (IsOnAvailableMoveScreen(initialTouch.position))
+                {
+                    //check horizontal normalized
+                    float horizontalInput = deltaX / Screen.width * 3f;
+                    //check vertical normalized
+                    float verticalInput = deltaY / Screen.height * 3f;
+
+                    //play audio sfx
+                    PlayMovementSFX();
+
+                    //user aim horizontal
+                    float horizontalAngle = horizontalInput * rotationSpeed * Time.fixedDeltaTime;
+                    //rotate validation
+                    float horizontalRotateResult = Mathf.Abs(transform.eulerAngles.y + horizontalAngle);
+                    if (
+                        //between 0' till -70'
+                        (horizontalRotateResult >= (360 - maximumSideRotationAngle) && horizontalRotateResult <= 360) ||
+                        //between 0' till 70'
+                        (horizontalRotateResult >= 0 && horizontalRotateResult < maximumSideRotationAngle) ||
+                        (horizontalRotateResult >= 360) //i dont know bug?
+                        )
+                    {
+                        transform.Rotate(0f, horizontalAngle, 0f);
+                    }
+
+                    //user aim vertical, 2f to fasting aim vertical
+                    float verticalAngle = verticalInput * rotationSpeed * Time.fixedDeltaTime;
+                    verticalAngle = verticalAngle * -1; //inverse
+                                                        //rotate validation
+                    float verticalRotateResult = (360 - weapon.transform.eulerAngles.x) - verticalAngle;
+                    if (verticalRotateResult >= maximumBottomRotationAngle && verticalRotateResult <= maximumUpRotationAngle || verticalRotateResult > 360 /* bug? */)
+                    {
+                        //rotate
+                        weapon.transform.Rotate(verticalAngle, 0f, 0f);
+                    }
+                }
+            }
+            else if(touch.phase == TouchPhase.Ended)
+            {
+                isSwiping = false;
+                initialTouch = new Touch();
             }
         }
+    }
 
-        //user aim vertical
-        if (joyStickInput.Vertical != 0 && isJoystickPressed)
+    bool IsOnAvailableMoveScreen(Vector3 touchPosition)
+    {
+        if(
+            touchPosition.x >= minLeftTouchPosition && 
+            touchPosition.x <= maxRightTouchPosition &&
+            touchPosition.y >= minBottomTouchPosition &&
+            touchPosition.y <= maxTopTouchPosition
+            )
         {
-            //play audio sfx
-            PlayMovementSFX();
-
-            float angle = joyStickInput.Vertical * rotationSpeed * Time.fixedDeltaTime;
-            angle = angle * -1; //inverse rotate
-
-            //rotate validation
-            float rotateResult = (360 - weapon.transform.eulerAngles.x) - angle;
-            if (rotateResult >= maximumBottomRotationAngle && rotateResult <= maximumUpRotationAngle || rotateResult > 360 /* bug? */)
-            {
-                //rotate
-                weapon.transform.Rotate(angle, 0f, 0f);
-            }
+            return true;
         }
+        else
+        {
+            return false;
+        }
+    }
+
+    void DebugText(string msg)
+    {
+        try
+        {
+            GameObject.Find("Debug Text").GetComponent<UnityEngine.UI.Text>().text = msg;
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    void CalculateAvailableScreenTouch()
+    {
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        //calculate horizontal,, can all the way
+        //float availableWidth = screenWidth * (touchRangePercent / 100);
+        //float marginX = (screenWidth - availableWidth) / 2;
+        minLeftTouchPosition = 0;
+        maxRightTouchPosition = screenWidth;
+
+        //calculate vertical
+        float availableHeight = screenHeight * (touchRangePercent / 100);
+        float marginY = (screenHeight - availableHeight) / 2;
+        minBottomTouchPosition = screenHeight - (marginY + availableHeight);
+        maxTopTouchPosition = screenHeight - marginY;
     }
 
     void PlayMovementSFX()

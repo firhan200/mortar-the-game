@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
 
     public void DropBox()
     {
-        Vector3 randomBoxPosition = new Vector3(Random.Range(-20, 25), 12f, Random.Range(20, 60));
+        Vector3 randomBoxPosition = new Vector3(Random.Range(-5.4f, 5.9f), 12f, Random.Range(20, 58));
         GameObject box = Instantiate(boxPrefab, randomBoxPosition, Quaternion.identity) as GameObject;
     }
 
