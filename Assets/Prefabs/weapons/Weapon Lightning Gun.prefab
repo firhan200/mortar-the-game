@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2849401138664498386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2849401138664498385}
+  - component: {fileID: 2849401138664498384}
+  m_Layer: 0
+  m_Name: Weapon Lightning Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2849401138664498385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2849401138664498386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2849401139442787158}
+  - {fileID: 2849401138675945712}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2849401138664498384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2849401138664498386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f368634899faed42818ed10ddfafa49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumSideRotationAngle: 70
+  maximumUpRotationAngle: 70
+  maximumBottomRotationAngle: 0
+  isFire: 0
+  firePower: 45
+  rotationSpeed: 50
+  ammoPrefab: {fileID: 3364921418846863166, guid: 4414fcaec23f9ce45b12488ebe1fd73c,
+    type: 3}
+  fireEffect: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
+  previewMode: 0
+--- !u!1001 &2849401138675550832
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2849401138664498385}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_Name
+      value: lightning_gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_TagString
+      value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8aa06753008a57d41893b591d1b771e1, type: 3}
+--- !u!4 &2849401138675945712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 8aa06753008a57d41893b591d1b771e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2849401138675550832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2849401139442661846
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2849401138664498385}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_Name
+      value: lightning_gun_holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.018967127
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e4aa486ca336054bade2ac16b790f18, type: 3}
+--- !u!4 &2849401139442787158 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 3e4aa486ca336054bade2ac16b790f18,
+    type: 3}
+  m_PrefabInstance: {fileID: 2849401139442661846}
+  m_PrefabAsset: {fileID: 0}

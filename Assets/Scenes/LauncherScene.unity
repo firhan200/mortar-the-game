@@ -114,6 +114,106 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &9975217
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1018864427}
+    m_Modifications:
+    - target: {fileID: 2849401138664498384, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: previewMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498386, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_Name
+      value: Weapon Lightning Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498386, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon Prefab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7da74c22e0f8924993600a5a1a27f3c, type: 3}
+--- !u!4 &9975218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9975217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &25905243
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +762,7 @@ Transform:
   m_Children:
   - {fileID: 1096557028}
   - {fileID: 1083421517}
+  - {fileID: 9975218}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 115, z: 0}

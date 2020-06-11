@@ -892,6 +892,7 @@ Transform:
   m_Children:
   - {fileID: 569636011}
   - {fileID: 1953296778}
+  - {fileID: 964382290}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -997,6 +998,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Weapon Canon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455454039811866398, guid: 6b94697a982f3c74e974731fdb283883,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b94697a982f3c74e974731fdb283883, type: 3}
@@ -1416,6 +1422,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &964382290 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2849401138548812419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134812077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,6 +2674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Missile
       objectReference: {fileID: 0}
+    - target: {fileID: 4358112587534155824, guid: d3dd8d92748b1a84baeef561bb1a2074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3dd8d92748b1a84baeef561bb1a2074, type: 3}
 --- !u!4 &1953296778 stripped
@@ -2824,3 +2841,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093243459}
   m_CullTransparentMesh: 0
+--- !u!1001 &2849401138548812419
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 554808397}
+    m_Modifications:
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498386, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_Name
+      value: Weapon Lightning Gun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7da74c22e0f8924993600a5a1a27f3c, type: 3}
