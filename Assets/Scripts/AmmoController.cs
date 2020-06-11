@@ -29,6 +29,7 @@ public class AmmoController : MonoBehaviour
     bool isLose = false;
     bool isHitTarget = false;
     private GameObject currentFlyingEffect;
+    bool isHitSomething = false;
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +67,14 @@ public class AmmoController : MonoBehaviour
     /* on ammo hit something */
     private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine(Hit());
+        //ammo has not hit something yet
+        if (!isHitSomething)
+        {
+            isHitSomething = true;
+
+            //start hit action
+            StartCoroutine(Hit());
+        }
     }
 
     IEnumerator Hit()
@@ -150,6 +158,12 @@ public class AmmoController : MonoBehaviour
                 //object has rigid body (destrucion object)
                 rigidbody.AddExplosionForce(explosionPower, transform.position, explosionRadius);
             }
+        }
+
+        if (isHitTarget)
+        {
+            //increment user point
+            gameController.IncrementPoint();
         }
     }
 

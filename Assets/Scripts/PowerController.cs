@@ -8,6 +8,9 @@ public class PowerController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     //slider
     public UnityEngine.UI.Slider powerSlider;
 
+    //last recorded power
+    public GameObject powerSliderLast;
+
     //slider increment
     public float sliderIncrement = 0.5f;
 
@@ -18,6 +21,12 @@ public class PowerController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public bool isHold = false;
     public bool isShot = false;
     public bool isBallReleased = false;
+
+    private void Awake()
+    {
+        //hide because user has not shot yet
+        powerSliderLast.SetActive(false);
+    }
 
     void Start()
     {
@@ -39,6 +48,13 @@ public class PowerController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             isShot = true; //ball is now shooting
             isBallReleased = true; //tell camera to follow ball
             isHold = false;
+
+            //record last power
+            if (!powerSliderLast.activeSelf)
+            {
+                powerSliderLast.SetActive(true);
+            }
+            powerSliderLast.GetComponent<UnityEngine.UI.Slider>().value = powerSlider.value;
         }
     }
 

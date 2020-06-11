@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     CameraController cameraController;
     int point = 0; //set no point, so first increment will be 0
     PlayerData playerData;
+    bool isBoxDropping = false;
 
     public void Awake()
     {
@@ -73,14 +74,17 @@ public class GameController : MonoBehaviour
         currentAmmo--;
 
         //redraw
-        //draw
         canvasAmmoController.DrawAmmoImages(currentAmmo);
     }
 
     public void DropBox()
     {
+        isBoxDropping = true;
+
         Vector3 randomBoxPosition = new Vector3(Random.Range(-5.4f, 5.9f), 12f, Random.Range(20, 58));
         GameObject box = Instantiate(boxPrefab, randomBoxPosition, Quaternion.identity) as GameObject;
+
+        isBoxDropping = false;
     }
 
     public void IncrementPoint()
@@ -123,9 +127,6 @@ public class GameController : MonoBehaviour
 
         if (isHitTarget)
         {
-            //increment point
-            IncrementPoint();
-
             //drop another box
             DropBox();
         }
