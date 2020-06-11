@@ -56,7 +56,8 @@ MonoBehaviour:
   rotationSpeed: 50
   ammoPrefab: {fileID: 1860732482349244169, guid: 7637496c32110f144a481bdb125ba484,
     type: 3}
-  fireEffect: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
+  fireEffect: {fileID: 1000013462590818, guid: 5f3183c653357674184e155168f42041, type: 3}
+  previewMode: 0
 --- !u!82 &1492061559
 AudioSource:
   m_ObjectHideFlags: 0

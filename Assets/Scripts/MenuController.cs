@@ -48,7 +48,8 @@ public class MenuController : MonoBehaviour
         highScoreText.text = "High Score: "+playerData.GetHighScore().ToString();
 
         //show selected weapon
-        ShowWeapon(playerData.GetSelectedWeaponIndex());
+        selectedWeaponIndex = playerData.GetSelectedWeaponIndex();
+        ShowWeapon(selectedWeaponIndex);
     }
 
     public void NextWeapon()

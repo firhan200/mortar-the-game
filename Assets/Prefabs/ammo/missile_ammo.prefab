@@ -124,12 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad7f3ab4690a444e9fb5b14a0fa21ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
+  explosionEffect: {fileID: 1000011797152326, guid: d3c637e774342294a89e52fe6751f1ca,
     type: 3}
-  explosionRadius: 7
+  explosionRadius: 7.5
   explosionCastSeconds: 2
   explosionPower: 50
-  flyingEffect: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4,
+  flyingEffect: {fileID: 1000010254994808, guid: 4ac7ae1d5ca3e6a48bf4fb591cda2765,
     type: 3}
 --- !u!82 &169333859716549522
 AudioSource:
