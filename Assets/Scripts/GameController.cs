@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    //input
+    //inputs
     [SerializeField]
     public int totalAmmo = 3;
 
     [SerializeField]
-    public GameObject boxPrefab;
+    public GameObject defaultTargetPrefab;
+
+    [SerializeField]
+    public GameObject specialTargetPrefab;
 
     //local
     int currentAmmo = 3;
@@ -22,6 +25,7 @@ public class GameController : MonoBehaviour
     int point = 0; //set no point, so first increment will be 0
     PlayerData playerData;
     bool isBoxDropping = false;
+    int dropCount = 0;
 
     public void Awake()
     {
@@ -79,18 +83,37 @@ public class GameController : MonoBehaviour
 
     public void DropBox()
     {
+        //increment drop count
+        dropCount++;
+
+        //set is box dropping to prevent double drop
         isBoxDropping = true;
 
         Vector3 randomBoxPosition = new Vector3(Random.Range(-5.4f, 5.9f), 12f, Random.Range(20, 58));
-        GameObject box = Instantiate(boxPrefab, randomBoxPosition, Quaternion.identity) as GameObject;
+
+        //select which box shoul be dropped
+        GameObject targetPrefab;
+        if (dropCount % 5 == 0)
+        {
+            //every x box, drop 1 special
+            targetPrefab = specialTargetPrefab;
+        }
+        else
+        {
+            //default
+            targetPrefab = defaultTargetPrefab;
+        }
+
+        //clone prefab
+        Instantiate(targetPrefab, randomBoxPosition, Quaternion.identity);
 
         isBoxDropping = false;
     }
 
-    public void IncrementPoint()
+    public void IncrementPoint(int targetPoint)
     {
         //increment point
-        point = point + 1;
+        point = point + targetPoint;
 
         //draw to score board
         scorePointText.text = point.ToString();

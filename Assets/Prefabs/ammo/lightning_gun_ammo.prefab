@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 1472517160122636, guid: 42b5a7c17e87672438c3602c0b701f71,
     type: 3}
-  explosionRadius: 10
+  explosionRadius: 6
   explosionCastSeconds: 2
   explosionPower: 5
   flyingEffect: {fileID: 0}

@@ -1193,7 +1193,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalAmmo: 3
-  boxPrefab: {fileID: 52872844820240904, guid: e7b8aa3d3d4fbb241950e97793ae0b37, type: 3}
+  defaultTargetPrefab: {fileID: 1120994535602124007, guid: dc6a3d5a991e69745915cbc032966737,
+    type: 3}
+  specialTargetPrefab: {fileID: 7192121346104060848, guid: c5e82a53facb48a4888f0c41ea8bd687,
+    type: 3}
 --- !u!1 &914108168
 GameObject:
   m_ObjectHideFlags: 0

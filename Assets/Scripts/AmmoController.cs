@@ -128,6 +128,8 @@ public class AmmoController : MonoBehaviour
 
     void CheckHitTarget()
     {
+        int targetPoint = 0;
+
         //check hit target
         Collider[] collidersToDestroy = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider nearbyObjectCollider in collidersToDestroy)
@@ -142,8 +144,14 @@ public class AmmoController : MonoBehaviour
                 {
                     isHitTarget = true;
 
+                    //target controll
+                    TargetController targetController = nearByGameObject.GetComponent<TargetController>();
+
+                    //get target point
+                    targetPoint = targetController.GetTargetPoint();
+
                     //destroy this box
-                    nearByGameObject.GetComponent<DestrucableScript>().Destroy();
+                    targetController.Destroy();
                 }
             }
         }
@@ -163,7 +171,7 @@ public class AmmoController : MonoBehaviour
         if (isHitTarget)
         {
             //increment user point
-            gameController.IncrementPoint();
+            gameController.IncrementPoint(targetPoint);
         }
     }
 
