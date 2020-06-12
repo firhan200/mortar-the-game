@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12466463, g: 0.15925205, b: 0.23599789, a: 1}
+  m_IndirectSpecularColor: {r: 0.12495536, g: 0.15962929, b: 0.23652476, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1387,6 +1387,12 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498384, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: ammoPrefab
+      value: 
+      objectReference: {fileID: 5416628585033673973, guid: 459acb1f2973d12448823d77430122bf,
+        type: 3}
     - target: {fileID: 2849401138664498385, guid: c7da74c22e0f8924993600a5a1a27f3c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1446,6 +1452,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Weapon Lightning Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849401138664498386, guid: c7da74c22e0f8924993600a5a1a27f3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7da74c22e0f8924993600a5a1a27f3c, type: 3}
@@ -1969,6 +1980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Weapon Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455454039811866398, guid: 6b94697a982f3c74e974731fdb283883,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7455454039811866399, guid: 6b94697a982f3c74e974731fdb283883,
         type: 3}
@@ -2585,11 +2601,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 4358112587534155824, guid: d3dd8d92748b1a84baeef561bb1a2074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4358112587534155825, guid: d3dd8d92748b1a84baeef561bb1a2074,
         type: 3}
       propertyPath: rotationSpeed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4358112587534155825, guid: d3dd8d92748b1a84baeef561bb1a2074,
+        type: 3}
+      propertyPath: ammoPrefab
+      value: 
+      objectReference: {fileID: 4153499357458390392, guid: cd4285cb651ee5e4b816b6e1a1eba76c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3dd8d92748b1a84baeef561bb1a2074, type: 3}
 --- !u!4 &1731941663 stripped
