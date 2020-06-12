@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        FollowBall();
+        //FollowBall();
     }
 
     void FollowBall()

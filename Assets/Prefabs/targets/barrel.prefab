@@ -126,4 +126,4 @@ MonoBehaviour:
   desctrucableVersion: {fileID: 307663345011237167, guid: 610b791478b36f844a275e8d8311626c,
     type: 3}
   targetPoint: 1
-  rotationAnimationSpeed: 3
+  rotationAnimationSpeed: 15

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2849401138664498384}
   - component: {fileID: 207028975}
   - component: {fileID: 1466163860}
+  - component: {fileID: 1429354126}
   m_Layer: 0
   m_Name: Weapon Lightning Gun
   m_TagString: Weapon Prefab
@@ -51,9 +52,9 @@ MonoBehaviour:
   maximumUpRotationAngle: 70
   maximumBottomRotationAngle: 0
   isFire: 0
-  firePower: 45
-  rotationSpeed: 50
-  ammoPrefab: {fileID: 3364921418846863166, guid: 4414fcaec23f9ce45b12488ebe1fd73c,
+  firePower: 40
+  rotationSpeed: 100
+  ammoPrefab: {fileID: 5416628585033673973, guid: 459acb1f2973d12448823d77430122bf,
     type: 3}
   fireEffect: {fileID: 1753776141928924, guid: 045d5fbbf8161ea478959fe3c8e41207, type: 3}
   previewMode: 0
@@ -249,6 +250,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1429354126
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2849401138664498386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec8eff041a991a747ad946467a9be8dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1720661561857795643
 PrefabInstance:
   m_ObjectHideFlags: 0

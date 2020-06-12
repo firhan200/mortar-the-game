@@ -12,12 +12,12 @@ public class TargetController : MonoBehaviour
     int targetPoint = 1; //default point if hit
 
     [SerializeField]
-    float rotationAnimationSpeed = 3f; //target rotaion speed
+    float rotationAnimationSpeed = 15f; //target rotaion speed
 
     private void FixedUpdate()
     {
         //rotate target
-        transform.Rotate(0f, rotationAnimationSpeed, 0f);
+        //transform.Rotate(0f, rotationAnimationSpeed * Time.fixedDeltaTime, 0f);
     }
 
     public void Destroy()

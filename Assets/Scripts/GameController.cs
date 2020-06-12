@@ -89,7 +89,7 @@ public class GameController : MonoBehaviour
         //set is box dropping to prevent double drop
         isBoxDropping = true;
 
-        Vector3 randomBoxPosition = new Vector3(Random.Range(-5.4f, 5.9f), 12f, Random.Range(20, 58));
+        Vector3 randomBoxPosition = new Vector3(Random.Range(-5.4f, 5.9f), 12f, Random.Range(12f, 30f));
 
         //select which box shoul be dropped
         GameObject targetPrefab;
