@@ -144,11 +144,19 @@ public class AmmoController : MonoBehaviour
                 {
                     isHitTarget = true;
 
+                    gameController.HitAnimation();
+
                     //target controll
                     TargetController targetController = nearByGameObject.GetComponent<TargetController>();
 
                     //get target point
                     targetPoint = targetController.GetTargetPoint();
+
+                    if(targetPoint > 1)
+                    {
+                        //special
+                        gameController.IncreaseAmmo(1);
+                    }
 
                     //destroy this box
                     targetController.Destroy();

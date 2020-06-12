@@ -117,6 +117,9 @@ public class WeaponController : MonoBehaviour
         {
             Fire();
             AimWithTouch();
+
+            //debug
+            AimWithKeyboard();
         }
         else
         {
@@ -241,6 +244,15 @@ public class WeaponController : MonoBehaviour
                 initialTouch = new Touch();
             }
         }
+    }
+
+    void AimWithKeyboard()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        transform.Rotate(0f, horizontalInput * rotationSpeed * Time.fixedDeltaTime, 0f);
+        weapon.transform.Rotate(verticalInput * rotationSpeed * Time.fixedDeltaTime * -1, 0f, 0f);
     }
 
     bool IsOnAvailableMoveScreen(Vector3 touchPosition)

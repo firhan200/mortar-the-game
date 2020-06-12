@@ -14,9 +14,15 @@ public class GameController : MonoBehaviour
     [SerializeField]
     public GameObject specialTargetPrefab;
 
+    [SerializeField]
+    public GameObject gotAmmoPrefab;
+
+    [SerializeField]
+    public GameObject hitAnimPrefab;
+
     //local
     int currentAmmo = 3;
-    UnityEngine.UI.Text scorePointText;
+    TMPro.TextMeshProUGUI scorePointText;
     UnityEngine.UI.Text scorePointGameOverText;
     UnityEngine.UI.RawImage[] ammoImages;
     CanvasAmmoController canvasAmmoController;
@@ -57,7 +63,7 @@ public class GameController : MonoBehaviour
 
     void InitScorePoint()
     {
-        scorePointText = GameObject.Find("Score Point").GetComponent<UnityEngine.UI.Text>();
+        scorePointText = GameObject.Find("Score Point").GetComponent<TMPro.TextMeshProUGUI>();
         scorePointGameOverText = GameObject.Find("Your Score Text").GetComponent<UnityEngine.UI.Text>();
     }
 
@@ -79,6 +85,41 @@ public class GameController : MonoBehaviour
 
         //redraw
         canvasAmmoController.DrawAmmoImages(currentAmmo);
+    }
+
+    public void IncreaseAmmo(int increaseNumber)
+    {
+        //show got ammo animation
+        GotAmmo();
+
+        //check if already max
+        if(currentAmmo < totalAmmo)
+        {
+            currentAmmo = currentAmmo + increaseNumber;
+
+            //redraw
+            canvasAmmoController.DrawAmmoImages(currentAmmo);
+        }
+    }
+
+    public void GotAmmo()
+    {
+        //get canvas
+        GameObject canvas = GameObject.Find("Canvas");
+
+        GameObject gotAmmo = Instantiate(gotAmmoPrefab, canvas.transform) as GameObject;
+
+        Destroy(gotAmmo, 1f);
+    }
+
+    public void HitAnimation()
+    {
+        //get canvas
+        GameObject canvas = GameObject.Find("Canvas");
+
+        GameObject hitAnim = Instantiate(hitAnimPrefab, canvas.transform) as GameObject;
+
+        Destroy(hitAnim, 1f);
     }
 
     public void DropBox()
