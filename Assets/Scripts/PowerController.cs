@@ -21,6 +21,7 @@ public class PowerController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public bool isHold = false;
     public bool isShot = false;
     public bool isBallReleased = false;
+    bool reversePower = false;
 
     private void Awake()
     {
@@ -68,7 +69,7 @@ public class PowerController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (isHold)
         {
-            if(powerSlider.value <= 1)
+            if(powerSlider.value >= 0 && powerSlider.value <= 1)
             {
                 //play sfx
                 if (!sfx.isPlaying)
@@ -76,8 +77,24 @@ public class PowerController : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                     sfx.Play();
                 }
 
+                if(powerSlider.value == 1)
+                {
+                    reversePower = true;
+                }
+                else if(powerSlider.value == 0)
+                {
+                    reversePower = false;
+                }
+
                 //increase bar
-                powerSlider.value += Time.fixedDeltaTime * sliderIncrement;
+                if (!reversePower)
+                {
+                    powerSlider.value += Time.fixedDeltaTime * sliderIncrement;
+                }
+                else
+                {
+                    powerSlider.value -= Time.fixedDeltaTime * sliderIncrement;
+                }
             }
         }
     }

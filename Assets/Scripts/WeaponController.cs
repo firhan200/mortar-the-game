@@ -146,7 +146,7 @@ public class WeaponController : MonoBehaviour
         if (powerController.isShot)
         {
             //duplicate
-            GameObject ammo = Instantiate(ammoPrefab, new Vector3(transform.localPosition.x, transform.localPosition.y + weapon.transform.localPosition.y, transform.localPosition.z), Quaternion.Euler(
+            GameObject ammo = Instantiate(ammoPrefab, new Vector3(transform.localPosition.x, transform.localPosition.y + weapon.transform.localPosition.y, transform.localPosition.z + 2f), Quaternion.Euler(
                     weapon.transform.eulerAngles.x,
                     transform.eulerAngles.y,
                     0f

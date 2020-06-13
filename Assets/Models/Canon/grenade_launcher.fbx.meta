@@ -1,0 +1,192 @@
+fileFormatVersion: 2
+guid: 17b22263c1a719c4395452498c11eaf8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Cube.001
+    100004: Cube.002
+    100006: Cyl Mid
+    100008: Cyl Mid.001
+    100010: Cyl Mid.002
+    100012: Cyl Mid.003
+    100014: Cyl Mid.004
+    100016: Cylinder.009
+    100018: Front Handle
+    100020: Front Mouth
+    100022: Front Mouth.001
+    100024: Front Mouth.002
+    100026: //RootNode
+    100028: Handle
+    100030: Handle Joint
+    100032: Handle Joint.001
+    100034: Handle Joint.002
+    100036: Handle.001
+    100038: Torus
+    400000: Cube
+    400002: Cube.001
+    400004: Cube.002
+    400006: Cyl Mid
+    400008: Cyl Mid.001
+    400010: Cyl Mid.002
+    400012: Cyl Mid.003
+    400014: Cyl Mid.004
+    400016: Cylinder.009
+    400018: Front Handle
+    400020: Front Mouth
+    400022: Front Mouth.001
+    400024: Front Mouth.002
+    400026: //RootNode
+    400028: Handle
+    400030: Handle Joint
+    400032: Handle Joint.001
+    400034: Handle Joint.002
+    400036: Handle.001
+    400038: Torus
+    2100000: GL Main 2
+    2100002: GL Main 3
+    2100004: GL Cyl
+    2100006: GL Main
+    2300000: Cube
+    2300002: Cube.001
+    2300004: Cube.002
+    2300006: Cyl Mid
+    2300008: Cyl Mid.001
+    2300010: Cyl Mid.002
+    2300012: Cyl Mid.003
+    2300014: Cyl Mid.004
+    2300016: Cylinder.009
+    2300018: Front Handle
+    2300020: Front Mouth
+    2300022: Front Mouth.001
+    2300024: Front Mouth.002
+    2300026: Handle
+    2300028: Handle Joint
+    2300030: Handle Joint.001
+    2300032: Handle Joint.002
+    2300034: Handle.001
+    2300036: Torus
+    3300000: Cube
+    3300002: Cube.001
+    3300004: Cube.002
+    3300006: Cyl Mid
+    3300008: Cyl Mid.001
+    3300010: Cyl Mid.002
+    3300012: Cyl Mid.003
+    3300014: Cyl Mid.004
+    3300016: Cylinder.009
+    3300018: Front Handle
+    3300020: Front Mouth
+    3300022: Front Mouth.001
+    3300024: Front Mouth.002
+    3300026: Handle
+    3300028: Handle Joint
+    3300030: Handle Joint.001
+    3300032: Handle Joint.002
+    3300034: Handle.001
+    3300036: Torus
+    4300000: Handle
+    4300002: Handle Joint
+    4300004: Handle Joint.001
+    4300006: Handle Joint.002
+    4300008: Cyl Mid
+    4300010: Cyl Mid.001
+    4300012: Cyl Mid.002
+    4300014: Cyl Mid.003
+    4300016: Cyl Mid.004
+    4300018: Front Mouth
+    4300020: Front Mouth.001
+    4300022: Front Handle
+    4300024: Cube
+    4300026: Cylinder.009
+    4300028: Cube.001
+    4300030: Cube.002
+    4300032: Handle.001
+    4300034: Torus
+    4300036: Front Mouth.002
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
