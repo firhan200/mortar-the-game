@@ -27,6 +27,9 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     public GameObject ammoPrefab;
 
+    [SerializeField]
+    public int highScoreToUnlock = 0;
+
     //effect prefabs
     [SerializeField]
     public GameObject fireEffect;

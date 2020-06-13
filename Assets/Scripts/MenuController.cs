@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +21,13 @@ public class MenuController : MonoBehaviour
     //player current state
     private PlayerData playerData;
 
+    //locked panel
+    private GameObject lockedPanel;
+    private TextMeshProUGUI weaponScoreToUnlock;
+
+    //can play game
+    bool canPlayGame = true;
+
     //selected weapon
     int selectedWeaponIndex = 0; //default
 
@@ -36,6 +44,10 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
+        //get lock panel
+        lockedPanel = GameObject.Find("Lock Panel");
+        weaponScoreToUnlock = GameObject.Find("Weapon Score Unlock").GetComponent<TextMeshProUGUI>();
+
         playerData = SaveData.LoadPlayerData();
         if(playerData == null)
         {
@@ -85,6 +97,7 @@ public class MenuController : MonoBehaviour
             if (counter == selectedWeaponIndex)
             {
                 transform.gameObject.SetActive(true);
+                CheckIfWeaponAvailable(transform.gameObject);
             }
             else
             {
@@ -93,8 +106,6 @@ public class MenuController : MonoBehaviour
 
             counter++;
         }
-
-        Debug.Log(totalWeapon);
 
         //hide or show arrow
         if(selectedWeaponIndex == 0)
@@ -120,12 +131,42 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    void CheckIfWeaponAvailable(GameObject weaponObject)
+    {
+        int scoreToUnlock = weaponObject.GetComponent<WeaponController>().highScoreToUnlock;
+        if (playerData.GetHighScore() >= scoreToUnlock)
+        {
+            //weapon available
+            LockWeapon(false, scoreToUnlock);
+        }
+        else
+        {
+            //weapon locked
+            LockWeapon(true, scoreToUnlock);
+        }
+    }
+
+    void LockWeapon(bool isLocked, int scoreToUnlock)
+    {
+        if (isLocked)
+        {
+            weaponScoreToUnlock.text = "High Score: " + scoreToUnlock.ToString();
+        }
+
+        //weapon available
+        lockedPanel.SetActive(isLocked);
+        canPlayGame = !isLocked;
+    }
+
     public void NewGame()
     {
-        //set selected weapon
-        SaveData.Save(playerData.GetHighScore(), selectedWeaponIndex);
+        if (canPlayGame)
+        {
+            //set selected weapon
+            SaveData.Save(playerData.GetHighScore(), selectedWeaponIndex);
 
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
+        }
     }
 
     public void QuitApplication()

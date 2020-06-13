@@ -56,6 +56,7 @@ MonoBehaviour:
   rotationSpeed: 100
   ammoPrefab: {fileID: 5416628585033673973, guid: 459acb1f2973d12448823d77430122bf,
     type: 3}
+  highScoreToUnlock: 30
   fireEffect: {fileID: 1753776141928924, guid: 045d5fbbf8161ea478959fe3c8e41207, type: 3}
   previewMode: 0
 --- !u!82 &207028975
