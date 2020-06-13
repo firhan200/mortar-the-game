@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     //local
     int currentAmmo = 3;
     TMPro.TextMeshProUGUI scorePointText;
-    UnityEngine.UI.Text scorePointGameOverText;
+    TMPro.TextMeshProUGUI scorePointGameOverText;
     UnityEngine.UI.RawImage[] ammoImages;
     CanvasAmmoController canvasAmmoController;
     PowerController powerController;
@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
     void InitScorePoint()
     {
         scorePointText = GameObject.Find("Score Point").GetComponent<TMPro.TextMeshProUGUI>();
-        scorePointGameOverText = GameObject.Find("Your Score Text").GetComponent<UnityEngine.UI.Text>();
+        scorePointGameOverText = GameObject.Find("Your Score Text").GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     void InitController()

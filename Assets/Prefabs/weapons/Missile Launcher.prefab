@@ -53,7 +53,7 @@ MonoBehaviour:
   maximumBottomRotationAngle: 0
   isFire: 0
   firePower: 40
-  rotationSpeed: 50
+  rotationSpeed: 100
   ammoPrefab: {fileID: 169333859716451640, guid: c80a91851526f074db71ed0fefe3392c,
     type: 3}
   highScoreToUnlock: 15
