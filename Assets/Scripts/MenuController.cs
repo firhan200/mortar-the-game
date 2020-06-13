@@ -14,7 +14,7 @@ public class MenuController : MonoBehaviour
     GameObject prevButton;
 
     [SerializeField]
-    UnityEngine.UI.Text highScoreText;
+    TextMeshProUGUI highScoreText;
 
     public static bool isFirstAppear = true;
 
@@ -24,6 +24,9 @@ public class MenuController : MonoBehaviour
     //locked panel
     private GameObject lockedPanel;
     private TextMeshProUGUI weaponScoreToUnlock;
+
+    //weapon name
+    private TextMeshProUGUI weaponName;
 
     //can play game
     bool canPlayGame = true;
@@ -47,6 +50,7 @@ public class MenuController : MonoBehaviour
         //get lock panel
         lockedPanel = GameObject.Find("Lock Panel");
         weaponScoreToUnlock = GameObject.Find("Weapon Score Unlock").GetComponent<TextMeshProUGUI>();
+        weaponName = GameObject.Find("Weapon Name").GetComponent<TextMeshProUGUI>();
 
         playerData = SaveData.LoadPlayerData();
         if(playerData == null)
@@ -97,6 +101,11 @@ public class MenuController : MonoBehaviour
             if (counter == selectedWeaponIndex)
             {
                 transform.gameObject.SetActive(true);
+
+                //set weapon name
+                weaponName.text = transform.gameObject.name;
+
+                //check if available
                 CheckIfWeaponAvailable(transform.gameObject);
             }
             else

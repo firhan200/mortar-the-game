@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, ammo.transform.position - new Vector3(0f, -2f, followRange), Time.fixedDeltaTime * followSpeed);
             }catch(Exception ex)
             {
-                Debug.Log(ex.Message);
+                //Debug.Log(ex.Message);
             }
         }
     }

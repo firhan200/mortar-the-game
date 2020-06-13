@@ -92,7 +92,7 @@ public class WeaponController : MonoBehaviour
 
         if(audios == null)
         {
-            Debug.Log("Please insert fire SFX and movement SFX Audio Source");
+            //Debug.Log("Please insert fire SFX and movement SFX Audio Source");
         }
     }
 
@@ -316,7 +316,7 @@ public class WeaponController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.Log("cannot play movement sfx");
+            //Debug.Log("cannot play movement sfx");
         }
     }
 
@@ -331,7 +331,7 @@ public class WeaponController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.Log("cannot play fire sfx");
+            //Debug.Log("cannot play fire sfx");
         }
     }
 
@@ -345,7 +345,7 @@ public class WeaponController : MonoBehaviour
             }
             catch (Exception ex)
             {
-                Debug.Log("cannot play animation");
+                //Debug.Log("cannot play animation");
             }
         }
 
@@ -359,7 +359,7 @@ public class WeaponController : MonoBehaviour
             }
             catch (Exception ex)
             {
-                Debug.Log("cannot play animation");
+                //Debug.Log("cannot play animation");
             }
         }
     }

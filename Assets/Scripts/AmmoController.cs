@@ -115,7 +115,7 @@ public class AmmoController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.Log(ex.Message);
+            //Debug.Log(ex.Message);
         }
 
         //stop ball
@@ -135,7 +135,6 @@ public class AmmoController : MonoBehaviour
         foreach (Collider nearbyObjectCollider in collidersToDestroy)
         {
             GameObject nearByGameObject = nearbyObjectCollider.gameObject;
-            Debug.Log(nearByGameObject.gameObject.name);
             Rigidbody rigidbody = nearbyObjectCollider.GetComponent<Rigidbody>();
             if (rigidbody != null)
             {
