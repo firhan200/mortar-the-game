@@ -57,6 +57,7 @@ MonoBehaviour:
   ammoPrefab: {fileID: 169333859716451640, guid: c80a91851526f074db71ed0fefe3392c,
     type: 3}
   highScoreToUnlock: 15
+  imagePreviewPath: Images/missile_launcher_preview
   fireEffect: {fileID: 1671709401335994, guid: 3f178c4b668dc9249b8559353ce8b891, type: 3}
   previewMode: 0
 --- !u!82 &1734442935

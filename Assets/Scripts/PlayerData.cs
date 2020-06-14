@@ -7,8 +7,14 @@ public class PlayerData
 {
     private int highScore;
     private int selectedWeaponIndex;
+    public bool missileLauncherAvailable = false;
+    public bool lightningGunAvailable = false;
+    public bool grenadeLauncherAvailable = false;
 
-    public PlayerData(int highScore, int selectedWeaponIndex)
+    public PlayerData(
+        int highScore, 
+        int selectedWeaponIndex
+        )
     {
         this.highScore = highScore;
         this.selectedWeaponIndex = selectedWeaponIndex;

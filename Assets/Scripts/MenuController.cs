@@ -56,7 +56,7 @@ public class MenuController : MonoBehaviour
         if(playerData == null)
         {
             //create default player data
-            SaveData.Save(0, 0);
+            SaveData.ResetSave();
             playerData = SaveData.LoadPlayerData();
         }
 

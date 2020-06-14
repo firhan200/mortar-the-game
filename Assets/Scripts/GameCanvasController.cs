@@ -6,15 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameCanvasController : MonoBehaviour
 {
     GameObject quitConfirmationPanel;
+    GameController gameController;
 
     private void Start()
     {
         quitConfirmationPanel = GameObject.Find("Quit Confirmation Panel");
         quitConfirmationPanel.SetActive(false);
+
+        gameController = GameObject.Find("World").GetComponent<GameController>();
     }
 
     public void BackToMenu()
     {
+        //save high score
+        gameController.SaveCurrentScore();
+
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 

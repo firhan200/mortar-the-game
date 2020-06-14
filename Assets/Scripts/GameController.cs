@@ -22,16 +22,33 @@ public class GameController : MonoBehaviour
 
     //local
     int currentAmmo = 3;
+
+    //score text pro
     TMPro.TextMeshProUGUI scorePointText;
     TMPro.TextMeshProUGUI scorePointGameOverText;
+
+    //ammo raw image
     UnityEngine.UI.RawImage[] ammoImages;
+
+    //controllers
     CanvasAmmoController canvasAmmoController;
     PowerController powerController;
     CameraController cameraController;
+
     int point = 0; //set no point, so first increment will be 0
+
+    //player save data
     PlayerData playerData;
+
     bool isBoxDropping = false;
+
+    //to drop random box
     int dropCount = 0;
+
+    //unlocked item canvas
+    GameObject unlockedCanvas;
+    UnityEngine.UI.RawImage unlockedItemImage;
+    TMPro.TextMeshProUGUI unlockedItemName;
 
     public void Awake()
     {
@@ -39,6 +56,8 @@ public class GameController : MonoBehaviour
         InitController();
 
         InitScorePoint();
+
+        InitUnlockedObject();
 
         //set ammo
         currentAmmo = totalAmmo;
@@ -59,6 +78,16 @@ public class GameController : MonoBehaviour
         playerData = SaveData.LoadPlayerData();
 
         SelectWeapon(playerData.GetSelectedWeaponIndex());
+    }
+
+    void InitUnlockedObject()
+    {
+        unlockedCanvas = GameObject.Find("Unlocked Canvas");
+        unlockedItemImage = GameObject.Find("Item Image").GetComponent<UnityEngine.UI.RawImage>();
+        unlockedItemName = GameObject.Find("Item Name").GetComponent<TMPro.TextMeshProUGUI>();
+
+        //hide
+        unlockedCanvas.SetActive(false);
     }
 
     void InitScorePoint()
@@ -159,6 +188,8 @@ public class GameController : MonoBehaviour
         //draw to score board
         scorePointText.text = point.ToString();
         scorePointGameOverText.text = "Your Score: "+point.ToString();
+
+        CheckIfUnlockedSomething(point);
     }
 
     public void AmmoHitSomething(bool isHitTarget)
@@ -226,5 +257,74 @@ public class GameController : MonoBehaviour
 
             SaveData.Save(newHighScore, playerData.GetSelectedWeaponIndex());
         }
+    }
+
+    public void SaveCurrentScore()
+    {
+        //check if high score greater than before
+        if (point > playerData.GetHighScore())
+        {
+            SaveData.Save(point, playerData.GetSelectedWeaponIndex());
+        }
+    }
+
+    public void CheckIfUnlockedSomething(int currentPoint)
+    {
+        //weapons
+        int counter = 0;
+        bool isNewHighScore = false;
+        GameObject weapons = GameObject.Find("Weapons") as GameObject;
+
+        //check if current point is new high score
+        if(currentPoint > playerData.GetHighScore())
+        {
+            isNewHighScore = true;
+        }
+
+        foreach (Transform transform in weapons.transform)
+        {
+            //if weapon not currently in use
+            if (counter != playerData.GetSelectedWeaponIndex() && counter != 0 /* no need to check canon */)
+            {
+                //get controller
+                WeaponController weaponController = transform.gameObject.GetComponent<WeaponController>();
+
+                //get weapon index
+                if(
+                    //high score has reach weapon minimum
+                    currentPoint >= weaponController.highScoreToUnlock &&
+                    //new high score
+                    isNewHighScore &&
+                    //weapon is unlocked before
+                    !SaveData.LoadWeaponAvailabilityByWeaponIndex(counter)
+                    )
+                {
+                    //save
+                    SaveData.SaveWeaponUnlocked(counter, true);
+
+                    Unlocked(weaponController.name, weaponController.imagePreviewPath);
+                }
+            }
+
+            counter++;
+        }
+    }
+
+    public void Unlocked(string itemName, string imagePath)
+    {
+        //set item name
+        unlockedItemName.text = itemName;
+
+        //set item image
+        unlockedItemImage.texture = Resources.Load<Texture2D>(imagePath);
+
+        //show canvas
+        unlockedCanvas.SetActive(true);
+    }
+
+    public void CloseUnlockedCanvas()
+    {
+        //show canvas
+        unlockedCanvas.SetActive(false);
     }
 }

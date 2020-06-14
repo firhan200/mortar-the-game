@@ -30,6 +30,9 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     public int highScoreToUnlock = 0;
 
+    [SerializeField]
+    public string imagePreviewPath = "";
+
     //effect prefabs
     [SerializeField]
     public GameObject fireEffect;
